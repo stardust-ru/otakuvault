@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact OtakuVault - Get in touch with our team for support, partnerships, or general inquiries.">
+    <title>Contact Us | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --success: #10b981;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 0.75rem; border-radius: 12px; cursor: pointer; }
+        
+        .page-header { padding: 8rem 5% 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1)); border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .page-title { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+        
+        .content-container { max-width: 1000px; margin: 0 auto; padding: 4rem 5%; }
+        
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
+        
+        .contact-info h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .contact-method { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding: 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; transition: all 0.3s; }
+        .contact-method:hover { border-color: var(--accent-cyan); transform: translateX(5px); }
+        .contact-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-method h3 { margin-bottom: 0.25rem; font-size: 1.1rem; }
+        .contact-method p { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
+        .contact-method a { color: var(--accent-cyan); text-decoration: none; }
+        
+        .contact-form-wrapper { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2rem; }
+        .contact-form-wrapper h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 500; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border); border-radius: 12px; padding: 0.875rem 1rem; color: var(--text-primary); font-size: 1rem; outline: none; transition: all 0.3s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+        
+        .submit-btn { width: 100%; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); color: white; border: none; padding: 1rem; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3); }
+        
+        .faq-section { margin-top: 4rem; padding-top: 4rem; border-top: 1px solid var(--glass-border); }
+        .faq-section h2 { text-align: center; margin-bottom: 2rem; }
+        .quick-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .quick-link { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.25rem; text-decoration: none; color: var(--text-primary); transition: all 0.3s; display: flex; align-items: center; gap: 0.75rem; }
+        .quick-link:hover { border-color: var(--accent-cyan); transform: translateY(-3px); }
+        .quick-link i { color: var(--accent-cyan); }
+        
+        footer { padding: 3rem 5%; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-copyright { color: var(--text-muted); font-size: 0.875rem; }
+        
+        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 1rem 2rem; border-radius: 50px; font-weight: 500; z-index: 10001; opacity: 0; transition: all 0.4s; display: flex; align-items: center; gap: 0.75rem; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-title { font-size: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .content-container { padding: 2rem 5%; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="box" style="width: 24px; height: 24px; color: white;"></i>
+                </div>
+                OtakuVault
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+                <i data-lucide="home" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-subtitle">Have a question or need help? We're here for you. Reach out through any of the channels below.</p>
+    </header>
+
+    <main class="content-container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i data-lucide="mail" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div>
+                        <h3>Email Us</h3>
+                        <p>For general inquiries:<br><a href="mailto:support@otakuvault.com">support@otakuvault.com</a></p>
+                        <p style="margin-top: 0.5rem;">For partnerships:<br><a href="mailto:partners@otakuvault.com">partners@otakuvault.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i data-lucide="clock" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div>
+                        <h3>Response Time</h3>
+                        <p>We typically respond within 24 hours during business days. For urgent order issues, please contact Amazon directly.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i data-lucide="map-pin" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div>
+                        <h3>Headquarters</h3>
+                        <p>OtakuVault Inc.<br>123 Anime Street, Tokyo District<br>Los Angeles, CA 90210</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i data-lucide="users" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div>
+                        <h3>Social Media</h3>
+                        <p>Follow us for updates, deals, and community:</p>
+                        <p style="margin-top: 0.5rem;">
+                            <a href="#" style="margin-right: 1rem;">Instagram</a>
+                            <a href="#" style="margin-right: 1rem;">Twitter</a>
+                            <a href="#">TikTok</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-wrapper">
+                <h2>Send a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic...</option>
+                            <option value="order">Order Status</option>
+                            <option value="returns">Returns & Refunds</option>
+                            <option value="product">Product Question</option>
+                            <option value="student">Student Discount</option>
+                            <option value="partnership">Partnership Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                        <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Quick Links</h2>
+            <div class="quick-links">
+                <a href="faq.html" class="quick-link">
+                    <i data-lucide="help-circle" style="width: 20px; height: 20px;"></i>
+                    <span>Browse FAQ</span>
+                </a>
+                <a href="shipping.html" class="quick-link">
+                    <i data-lucide="truck" style="width: 20px; height: 20px;"></i>
+                    <span>Shipping Info</span>
+                </a>
+                <a href="returns.html" class="quick-link">
+                    <i data-lucide="refresh-cw" style="width: 20px; height: 20px;"></i>
+                    <span>Returns Policy</span>
+                </a>
+                <a href="student-discount.html" class="quick-link">
+                    <i data-lucide="graduation-cap" style="width: 20px; height: 20px;"></i>
+                    <span>Student Discount</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="returns.html">Returns</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OtakuVault. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i data-lucide="info" style="width: 20px; height: 20px;"></i>
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Thank you! Your message has been sent. We will reply within 24 hours.');
+            this.reset();
+        });
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>

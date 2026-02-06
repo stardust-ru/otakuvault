@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OtakuVault - Your trusted source for premium anime collectibles, figures, and merchandise. Discover quality products with detailed reviews and expert guides for collectors.">
+    <title>OtakuVault | Premium Anime Collectibles & Figures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.2);
+            --accent-glow: rgba(255, 255, 255, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.1);
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --accent-cyan: #00d4ff;
+            --accent-orange: #ff6b35;
+            --accent-green: #00c853;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-black);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255,255,255,0.02) 0%, transparent 50%);
+            animation: bgPulse 8s ease-in-out infinite;
+        }
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            overflow: hidden; pointer-events: none;
+        }
+        .particle {
+            position: absolute; width: 4px; height: 4px;
+            background: rgba(255, 255, 255, 0.3); border-radius: 50%;
+            animation: float 20s infinite linear;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        @keyframes float {
+            from { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            to { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.5rem 5%; transition: all 0.4s var(--transition-smooth);
+            backdrop-filter: blur(0px); background: transparent;
+        }
+        nav.scrolled {
+            backdrop-filter: blur(20px); background: rgba(10, 10, 10, 0.85);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 5%; box-shadow: var(--shadow-md);
+        }
+        .nav-container {
+            max-width: 1400px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 0.75rem;
+            text-decoration: none; color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem; font-weight: 700;
+            transition: transform 0.3s var(--transition-bounce);
+        }
+        .logo:hover { transform: scale(1.05); }
+        .logo-icon {
+            width: 40px; height: 40px; background: var(--glass-bg);
+            border: 1px solid var(--glass-border); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px); box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+        .logo:hover .logo-icon {
+            background: var(--glass-highlight);
+            transform: rotate(10deg);
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 2rem;
+        }
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .search-box:focus {
+            outline: none;
+            background: var(--glass-highlight);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+        .search-results {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+        }
+        .search-results.active { display: block; }
+        .search-result-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover {
+            background: var(--glass-bg);
+        }
+        .search-result-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        .search-result-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        .search-result-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .no-results {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s var(--transition-smooth);
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent-cyan);
+            color: var(--primary-black);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 3rem;
+            transition: all 0.3s var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        /* About Section - Homepage Content */
+        .about-section {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, var(--primary-black) 0%, #0d0d0d 100%);
+        }
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .about-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .about-content {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.9;
+        }
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .highlight-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .highlight-card:hover {
+            background: var(--glass-highlight);
+            transform: translateY(-5px);
+        }
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            color: var(--accent-cyan);
+        }
+        .highlight-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 6rem 5%;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s var(--transition-smooth);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .product-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--glass-highlight);
+            box-shadow: var(--shadow-lg);
+        }
+        .product-image-wrapper {
+            position: relative;
+            padding-top: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            overflow: hidden;
+        }
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-cyan);
+            color: var(--primary-black);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 2rem;
+            z-index: 2;
+        }
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        .quick-view {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-white);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        .quick-view:hover {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-category {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .product-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .stars {
+            display: flex;
+            gap: 0.125rem;
+        }
+        .rating-count {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+        .product-price {
+            display: flex;
+            flex-direction: column;
+        }
+        .price-original {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-decoration: line-through;
+        }
+        .price-current {
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .btn-buy {
+            padding: 0.625rem 1.25rem;
+            background: var(--accent-cyan);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        .btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Blog Preview Section */
+        .blog-preview-section {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, #0d0d0d 0%, var(--primary-black) 100%);
+        }
+        .blog-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .blog-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .read-more {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 5% 2rem;
+            background: var(--primary-black);
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateY(150%);
+            transition: transform 0.3s var(--transition-spring);
+            z-index: 9999;
+            box-shadow: var(--shadow-lg);
+        }
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .search-container {
+                max-width: 400px;
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .search-container {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-width: none;
+                margin: 1rem;
+                display: none;
+            }
+            .search-container.active {
+                display: block;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="layers" style="width: 24px; height: 24px;"></i>
+                </div>
+                OtakuVault
+            </a>
+            
+            <div class="search-container" id="searchContainer">
+                <i data-lucide="search" class="search-icon" style="width: 20px; height: 20px;"></i>
+                <input type="text" class="search-box" id="searchInput" placeholder="Search collectibles...">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Discover Premium Anime Collectibles</h1>
+                <p>Welcome to OtakuVault, your trusted destination for exploring quality anime figures, collectibles, and merchandise. We help passionate fans and collectors discover authentic products with detailed information, expert guides, and a commitment to quality.</p>
+                <a href="#products" class="cta-button">
+                    Explore Collection
+                    <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+                </a>
+            </div>
+            <div class="hero-image">
+                <!-- Hero visual space -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <h2>Why Choose OtakuVault?</h2>
+            <div class="about-content">
+                <p>OtakuVault exists to serve the anime collecting community with integrity and passion. We understand that building a collection is more than just acquiring products—it's about celebrating the stories and characters that inspire you. Our platform provides carefully researched product information, honest assessments, and educational resources to help you make informed decisions.</p>
+                
+                <p>Whether you're a seasoned collector looking to add a specific piece to your display or a newcomer exploring the world of anime merchandise for the first time, we offer guidance you can trust. We focus on officially licensed products from reputable manufacturers, ensuring that every recommendation meets standards for quality and authenticity.</p>
+                
+                <p>Our mission extends beyond product listings. Through detailed guides and blog articles, we share knowledge about collecting best practices, helping you understand what makes certain figures valuable, how to identify quality craftsmanship, and ways to build a collection that brings you joy for years to come. We believe informed collectors make better purchasing decisions and get more satisfaction from their hobby.</p>
+                
+                <p>When you explore products through OtakuVault, you're accessing affiliate partnerships with established retailers. This means you get the convenience of discovering quality items in one place while we earn a small commission that helps us maintain this resource. These partnerships never influence our commitment to honest, user-focused content—your trust is our priority.</p>
+            </div>
+
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i data-lucide="shield-check" style="width: 100%; height: 100%;"></i>
+                    </div>
+                    <h3>Authentic Products</h3>
+                    <p>We only feature officially licensed merchandise from trusted manufacturers and verified retailers.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i data-lucide="book-open" style="width: 100%; height: 100%;"></i>
+                    </div>
+                    <h3>Expert Guides</h3>
+                    <p>Access detailed articles and insights to help you become a more knowledgeable collector.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i data-lucide="users" style="width: 100%; height: 100%;"></i>
+                    </div>
+                    <h3>Community Focus</h3>
+                    <p>Built by collectors for collectors, with content designed to serve the community's needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-header">
+            <h2>Featured Collectibles</h2>
+            <p>Explore our curated selection of quality anime merchandise</p>
+        </div>
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section class="blog-preview-section">
+        <div class="section-header">
+            <h2>Collector's Resources</h2>
+            <p>Expert guides and insights to enhance your collecting journey</p>
+        </div>
+        <div class="blog-grid">
+            <a href="blog-choosing-figures.html" class="blog-card">
+                <div class="blog-meta">
+                    <span>February 6, 2026</span>
+                    <span>•</span>
+                    <span>8 min read</span>
+                </div>
+                <h3>How to Choose Quality Anime Figures</h3>
+                <p class="blog-excerpt">
+                    Learn how to identify quality pieces by understanding materials, paint application, authenticity, and value. Essential knowledge for both new and experienced collectors.
+                </p>
+                <span class="read-more">
+                    Read Article
+                    <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </span>
+            </a>
+
+            <a href="blog-why-popular.html" class="blog-card">
+                <div class="blog-meta">
+                    <span>February 6, 2026</span>
+                    <span>•</span>
+                    <span>9 min read</span>
+                </div>
+                <h3>Why Anime Collectibles Are Popular</h3>
+                <p class="blog-excerpt">
+                    Discover the fascinating reasons behind anime collectible popularity, from emotional connections to artistic appreciation and community building.
+                </p>
+                <span class="read-more">
+                    Read Article
+                    <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>OtakuVault</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your trusted source for quality anime collectibles and expert collecting guidance.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="blog-choosing-figures.html">Collector's Guide</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 OtakuVault. All rights reserved. | <a href="privacy.html" style="color: var(--text-secondary);">Privacy Policy</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.8125rem;">We are a participant in affiliate advertising programs designed to provide a means for sites to earn advertising fees.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i data-lucide="check-circle" style="width: 20px; height: 20px; color: var(--accent-green);"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Navigation scroll effect
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Load and render products
+        let allProducts = [];
+
+        async function loadProducts() {
+            try {
+                const response = await fetch('products.json');
+                const data = await response.json();
+                allProducts = data.products;
+                renderProducts(allProducts);
+            } catch (error) {
+                console.error('Error loading products:', error);
+                renderProducts([]);
+            }
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            
+            if (products.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No products found</p>';
+                return;
+            }
+
+            grid.innerHTML = products.map((product, index) => `
+                <a href="product.html?id=${product.id}" class="product-card" style="transition-delay: ${index * 0.1}s">
+                    <div class="product-image-wrapper">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="quick-view" onclick="event.preventDefault(); event.stopPropagation(); quickView('${product.id}')">
+                                <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                ${generateStars(product.rating)}
+                            </div>
+                            <span class="rating-count">(${formatNumber(product.reviews)})</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-original">$${product.originalPrice}</span>
+                                <span class="price-current">$${product.price}</span>
+                            </div>
+                            <span class="btn-buy" onclick="event.preventDefault(); event.stopPropagation(); window.open('${product.amazonUrl || '#'}', '_blank')">
+                                Buy Now
+                                <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+            
+            lucide.createIcons();
+            setupScrollAnimations();
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<svg width="16" height="16" viewBox="0 0 24 24" fill="#ffd700" stroke="#ffd700" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
+                    stars += '<svg width="16" height="16" viewBox="0 0 24 24"><defs><linearGradient id="half'+i+'"><stop offset="50%" stop-color="#ffd700"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs><polygon fill="url(#half'+i+')" stroke="#ffd700" stroke-width="2" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                } else {
+                    stars += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                }
+            }
+            return stars;
+        }
+
+        function formatNumber(num) {
+            return num >= 1000 ? (num/1000).toFixed(1) + 'k' : num;
+        }
+
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.product-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(40px)';
+                setTimeout(() => {
+                    observer.observe(card);
+                }, index * 100);
+            });
+        }
+
+        function quickView(productId) {
+            showToast('Loading product details...');
+            setTimeout(() => {
+                window.location.href = `product.html?id=${productId}`;
+            }, 500);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            lucide.createIcons();
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim().toLowerCase();
+            
+            if (query.length === 0) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            searchTimeout = setTimeout(() => {
+                performSearch(query);
+            }, 300);
+        });
+
+        function performSearch(query) {
+            const results = allProducts.filter(product => 
+                product.name.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query) ||
+                (product.shortDescription && product.shortDescription.toLowerCase().includes(query))
+            );
+
+            displaySearchResults(results, query);
+        }
+
+        function displaySearchResults(results, query) {
+            if (results.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <p>No products found for "${query}"</p>
+                    </div>
+                `;
+            } else {
+                searchResults.innerHTML = results.map(product => `
+                    <div class="search-result-item" onclick="window.location.href='product.html?id=${product.id}'">
+                        <img src="${product.images[0]}" alt="${product.name}" class="search-result-img">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>${product.category} • $${product.price}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            searchResults.classList.add('active');
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const searchContainer = document.getElementById('searchContainer');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            searchContainer.classList.toggle('active');
+        });
+
+        // Initialize
+        loadProducts();
+
+        // 3D tilt effect for product cards (desktop only)
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                const cards = document.querySelectorAll('.product-card:hover');
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.02)`;
+                });
+            });
+
+            document.addEventListener('mouseout', (e) => {
+                if (e.target.classList && e.target.classList.contains('product-card')) {
+                    e.target.style.transform = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

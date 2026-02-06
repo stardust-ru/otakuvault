@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add Product | OtakuVault</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-cyan: #00d4ff;
+            --accent-green: #00c853;
+            --accent-orange: #ff6b35;
+            --border-color: #2a2a2a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 1rem;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        
+        /* Steps */
+        .steps {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .steps h3 {
+            color: var(--accent-cyan);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+        }
+        
+        .step-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 0.875rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .step-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-cyan);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        /* Form */
+        .form-section {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--accent-orange);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #555;
+        }
+        
+        .hint {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.375rem;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        @media (max-width: 480px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, #0099cc 100%);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            margin-top: 0.75rem;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+        
+        /* Output Section */
+        .output-section {
+            margin-top: 1.5rem;
+            display: none;
+        }
+        
+        .output-section.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .success-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--accent-green);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .code-box {
+            position: relative;
+            background: #0a0a0a;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .code-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        .copy-btn {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 0.375rem 0.875rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        pre {
+            padding: 1rem;
+            overflow-x: auto;
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            color: #0f0;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        /* Instructions after copy */
+        .next-steps {
+            background: var(--bg-secondary);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .next-steps h4 {
+            color: var(--accent-orange);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .next-steps ol {
+            margin-left: 1.25rem;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+        
+        .next-steps li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Preview */
+        .preview-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .preview-card {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .preview-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 0.75rem;
+            object-fit: cover;
+            background: var(--bg-card);
+        }
+        
+        .preview-info {
+            flex: 1;
+        }
+        
+        .preview-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .preview-price {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* Collapsible sections */
+        .section-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            color: var(--text-primary);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 0.75rem;
+        }
+        
+        .section-content {
+            display: none;
+            padding: 0 0.5rem;
+        }
+        
+        .section-content.show {
+            display: block;
+        }
+        
+        .chevron {
+            transition: transform 0.3s;
+        }
+        
+        .chevron.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">⚡ Admin Panel</div>
+            <p class="subtitle">Add new products to OtakuVault</p>
+        </header>
+        
+        <!-- Steps -->
+        <div class="steps">
+            <h3>📋 How to Add Product</h3>
+            <ol class="step-list">
+                <li>Fill all required fields below</li>
+                <li>Click "Generate Product Code"</li>
+                <li>Copy the green code</li>
+                <li>Open <code>products.json</code> on GitHub</li>
+                <li>Add comma after last product's <code>}</code></li>
+                <li>Paste your new product code</li>
+                <li>Save file - Product goes live instantly!</li>
+            </ol>
+        </div>
+        
+        <!-- Form -->
+        <div class="form-section">
+            <!-- Basic Info -->
+            <button class="section-toggle" onclick="toggleSection('basic')">
+                <span>📦 Basic Information</span>
+                <span class="chevron" id="chevron-basic">▼</span>
+            </button>
+            <div class="section-content show" id="section-basic">
+                <div class="form-group">
+                    <label class="required">Product ID (unique, no spaces)</label>
+                    <input type="text" id="id" placeholder="e.g., gojo-figure-v2" oninput="updatePreview()">
+                    <p class="hint">Use lowercase letters, numbers, and hyphens only</p>
+                </div>
+                
+                <div class="form-group">
+                    <label class="required">Product Name</label>
+                    <input type="text" id="name" placeholder="e.g., Gojo Satoru Unlimited Void Figure" oninput="updatePreview()">
+                </div>
+                
+                <div class="form-group">
+                    <label class="required">Category</label>
+                    <input type="text" id="category" placeholder="e.g., Jujutsu Kaisen" list="categories" oninput="updatePreview()">
+                    <datalist id="categories">
+                        <option value="Demon Slayer">
+                        <option value="Jujutsu Kaisen">
+                        <option value="Attack on Titan">
+                        <option value="Cameras">
+                        <option value="Accessories">
+                        <option value="Limited Edition">
+                        <option value="Gift Sets">
+                    </datalist>
+                </div>
+            </div>
+            
+            <!-- Pricing -->
+            <button class="section-toggle" onclick="toggleSection('pricing')">
+                <span>💰 Pricing & Stock</span>
+                <span class="chevron" id="chevron-pricing">▼</span>
+            </button>
+            <div class="section-content show" id="section-pricing">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="required">Current Price ($)</label>
+                        <input type="number" id="price" placeholder="89.99" step="0.01" oninput="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Original Price ($)</label>
+                        <input type="number" id="originalPrice" placeholder="129.99" step="0.01" oninput="updatePreview()">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label>Discount Badge</label>
+                        <input type="text" id="discount" placeholder="-30%" value="-20%">
+                    </div>
+                    <div class="form-group">
+                        <label>Special Badge</label>
+                        <select id="badge">
+                            <option value="">None</option>
+                            <option value="HOT">🔥 HOT</option>
+                            <option value="NEW">✨ NEW</option>
+                            <option value="LIMITED">💎 LIMITED</option>
+                            <option value="BESTSELLER">⭐ BESTSELLER</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="required">Rating (1-5)</label>
+                        <input type="number" id="rating" placeholder="4.8" step="0.1" min="1" max="5" value="4.5">
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Review Count</label>
+                        <input type="number" id="reviews" placeholder="1234" value="100">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Stock Status</label>
+                    <select id="stock">
+                        <option value="in">✅ In Stock</option>
+                        <option value="low">⚠️ Low Stock</option>
+                        <option value="out">❌ Out of Stock</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Links & Description -->
+            <button class="section-toggle" onclick="toggleSection('details')">
+                <span>📝 Details & Links</span>
+                <span class="chevron" id="chevron-details">▼</span>
+            </button>
+            <div class="section-content" id="section-details">
+                <div class="form-group">
+                    <label class="required">Amazon Product URL</label>
+                    <input type="url" id="amazonUrl" placeholder="https://amazon.com/dp/B08...">
+                    <p class="hint">Your affiliate link where customers will buy</p>
+                </div>
+                
+                <div class="form-group">
+                    <label class="required">Product Description</label>
+                    <textarea id="description" rows="3" placeholder="Describe the product..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Images -->
+            <button class="section-toggle" onclick="toggleSection('images')">
+                <span>🖼️ Images (4 URLs)</span>
+                <span class="chevron" id="chevron-images">▼</span>
+            </button>
+            <div class="section-content" id="section-images">
+                <div class="form-group">
+                    <label class="required">Main Image URL</label>
+                    <input type="url" id="img1" placeholder="https://images.unsplash.com/..." oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Image 2 URL</label>
+                    <input type="url" id="img2" placeholder="https://images.unsplash.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Image 3 URL</label>
+                    <input type="url" id="img3" placeholder="https://images.unsplash.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Image 4 URL</label>
+                    <input type="url" id="img4" placeholder="https://images.unsplash.com/...">
+                </div>
+                <p class="hint">💡 Tip: Use unsplash.com or imgur.com for free image hosting</p>
+            </div>
+            
+            <!-- Features -->
+            <button class="section-toggle" onclick="toggleSection('features')">
+                <span>✨ Features (6 items)</span>
+                <span class="chevron" id="chevron-features">▼</span>
+            </button>
+            <div class="section-content" id="section-features">
+                <div class="form-group">
+                    <input type="text" id="feat1" placeholder="Feature 1: e.g., 6K video recording">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="feat2" placeholder="Feature 2: e.g., Waterproof design">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="feat3" placeholder="Feature 3">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="feat4" placeholder="Feature 4">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="feat5" placeholder="Feature 5">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="feat6" placeholder="Feature 6">
+                </div>
+            </div>
+            
+            <!-- Specs -->
+            <button class="section-toggle" onclick="toggleSection('specs')">
+                <span>📊 Specifications</span>
+                <span class="chevron" id="chevron-specs">▼</span>
+            </button>
+            <div class="section-content" id="section-specs">
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" id="spec1name" placeholder="Spec name (e.g., Brand)">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="spec1val" placeholder="Value (e.g., Sony)">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" id="spec2name" placeholder="Spec name (e.g., Weight)">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="spec2val" placeholder="Value (e.g., 1.2 lbs)">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" id="spec3name" placeholder="Spec name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="spec3val" placeholder="Value">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" id="spec4name" placeholder="Spec name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="spec4val" placeholder="Value">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" id="spec5name" placeholder="Spec name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="spec5val" placeholder="Value">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" id="spec6name" placeholder="Spec name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="spec6val" placeholder="Value">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Preview -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <label>Preview</label>
+                <div class="preview-card">
+                    <img src="" alt="" class="preview-image" id="previewImg">
+                    <div class="preview-info">
+                        <div class="preview-name" id="previewName">Product Name</div>
+                        <div class="preview-price" id="previewPrice">$0.00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Generate Button -->
+            <button class="btn btn-primary" onclick="generateProduct()" style="margin-top: 1.5rem;">
+                ⚡ Generate Product Code
+            </button>
+            
+            <button class="btn btn-secondary" onclick="fillDemo()">
+                📝 Fill Demo Data (Test)
+            </button>
+        </div>
+        
+        <!-- Output -->
+        <div class="output-section" id="outputSection">
+            <div class="success-badge">
+                ✅ Product code generated successfully!
+            </div>
+            
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-label">Copy this code</span>
+                    <button class="copy-btn" onclick="copyCode()">Copy</button>
+                </div>
+                <pre id="codeOutput"></pre>
+            </div>
+            
+            <div class="next-steps">
+                <h4>📱 Next Steps (Do this on GitHub):</h4>
+                <ol>
+                    <li>Open your GitHub repository in browser/app</li>
+                    <li>Tap on <code>products.json</code> file</li>
+                    <li>Tap ✏️ pencil icon (Edit)</li>
+                    <li>Scroll to bottom, find last <code>}</code> (before final <code>]</code>)</li>
+                    <li>Add a comma <code>,</code> after that <code>}</code></li>
+                    <li>Press Enter to create new line</li>
+                    <li><strong>Paste your copied code</strong></li>
+                    <li>Scroll down, tap "Commit changes"</li>
+                    <li>✅ Done! Product is now live on your website!</li>
+                </ol>
+            </div>
+            
+            <button class="btn btn-primary" onclick="copyCode()" style="margin-top: 1rem;">
+                📋 Copy Code Again
+            </button>
+        </div>
+    </div>
+    
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span>✅</span>
+        <span id="toastMsg">Copied to clipboard!</span>
+    </div>
+    
+    <script>
+        // Toggle sections
+        function toggleSection(name) {
+            const content = document.getElementById('section-' + name);
+            const chevron = document.getElementById('chevron-' + name);
+            content.classList.toggle('show');
+            chevron.classList.toggle('rotate');
+        }
+        
+        // Update preview
+        function updatePreview() {
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const img = document.getElementById('img1').value;
+            
+            if (name || price || img) {
+                document.getElementById('previewSection').style.display = 'block';
+                document.getElementById('previewName').textContent = name || 'Product Name';
+                document.getElementById('previewPrice').textContent = price ? '$' + price : '$0.00';
+                document.getElementById('previewImg').src = img || 'https://via.placeholder.com/80';
+            }
+        }
+        
+        // Generate product JSON
+        function generateProduct() {
+            // Get values
+            const id = document.getElementById('id').value.trim().toLowerCase().replace(/\s+/g, '-');
+            const name = document.getElementById('name').value.trim();
+            const category = document.getElementById('category').value.trim();
+            const price = parseFloat(document.getElementById('price').value);
+            const originalPrice = parseFloat(document.getElementById('originalPrice').value);
+            const rating = parseFloat(document.getElementById('rating').value);
+            const reviews = parseInt(document.getElementById('reviews').value);
+            const discount = document.getElementById('discount').value.trim() || '-20%';
+            const badge = document.getElementById('badge').value;
+            const stock = document.getElementById('stock').value;
+            const amazonUrl = document.getElementById('amazonUrl').value.trim();
+            const description = document.getElementById('description').value.trim();
+            
+            // Validation
+            if (!id || !name || !category || !price || !originalPrice || !amazonUrl || !description) {
+                alert('Please fill all required fields (marked with *)');
+                return;
+            }
+            
+            // Images
+            const images = [
+                document.getElementById('img1').value.trim(),
+                document.getElementById('img2').value.trim(),
+                document.getElementById('img3').value.trim(),
+                document.getElementById('img4').value.trim()
+            ].filter(url => url);
+            
+            if (images.length === 0) {
+                alert('Please add at least one image URL');
+                return;
+            }
+            
+            // Features
+            const features = [
+                document.getElementById('feat1').value.trim(),
+                document.getElementById('feat2').value.trim(),
+                document.getElementById('feat3').value.trim(),
+                document.getElementById('feat4').value.trim(),
+                document.getElementById('feat5').value.trim(),
+                document.getElementById('feat6').value.trim()
+            ].filter(f => f);
+            
+            // Specs
+            const specs = {};
+            for (let i = 1; i <= 6; i++) {
+                const name = document.getElementById('spec' + i + 'name').value.trim();
+                const val = document.getElementById('spec' + i + 'val').value.trim();
+                if (name && val) specs[name] = val;
+            }
+            
+            // Build product object
+            const product = {
+                id,
+                name,
+                category,
+                price,
+                originalPrice,
+                rating,
+                reviews,
+                badge: badge || null,
+                discount,
+                stock,
+                amazonUrl,
+                description,
+                images,
+                features: features.length > 0 ? features : ['High quality product', 'Official merchandise'],
+                specs: Object.keys(specs).length > 0 ? specs : { 'Brand': 'Official', 'Type': category }
+            };
+            
+            // Generate formatted JSON
+            const jsonStr = JSON.stringify(product, null, 2);
+            
+            // Show output
+            document.getElementById('codeOutput').textContent = jsonStr;
+            document.getElementById('outputSection').classList.add('show');
+            
+            // Scroll to output
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Copy code
+        function copyCode() {
+            const code = document.getElementById('codeOutput').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                showToast('Code copied! Now paste in products.json');
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Code copied!');
+            });
+        }
+        
+        // Show toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // Fill demo data
+        function fillDemo() {
+            document.getElementById('id').value = 'demo-product-' + Date.now();
+            document.getElementById('name').value = 'Gojo Satoru Unlimited Void Figure';
+            document.getElementById('category').value = 'Jujutsu Kaisen';
+            document.getElementById('price').value = '104.99';
+            document.getElementById('originalPrice').value = '149.99';
+            document.getElementById('rating').value = '4.9';
+            document.getElementById('reviews').value = '2156';
+            document.getElementById('discount').value = '-30%';
+            document.getElementById('badge').value = 'HOT';
+            document.getElementById('stock').value = 'in';
+            document.getElementById('amazonUrl').value = 'https://amazon.com/dp/B08DEMO123';
+            document.getElementById('description').value = 'Behold the strongest jujutsu sorcerer in this breathtaking Unlimited Void pose. Features UV-reactive effect parts that glow under black light.';
+            
+            document.getElementById('img1').value = 'https://images.unsplash.com/photo-1560972550-aba3456b5564?w=600&q=80';
+            document.getElementById('img2').value = 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&q=80';
+            document.getElementById('img3').value = 'https://images.unsplash.com/photo-1607604276583-eef5a0adcc99?w=600&q=80';
+            document.getElementById('img4').value = 'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=600&q=80';
+            
+            document.getElementById('feat1').value = 'UV-reactive glowing effects';
+            document.getElementById('feat2').value = 'Removable blindfold option';
+            document.getElementById('feat3').value = 'Domain Expansion base included';
+            document.getElementById('feat4').value = 'Collector edition packaging';
+            document.getElementById('feat5').value = 'Interchangeable hand parts';
+            document.getElementById('feat6').value = 'Premium metallic finish';
+            
+            document.getElementById('spec1name').value = 'Scale';
+            document.getElementById('spec1val').value = '1/7';
+            document.getElementById('spec2name').value = 'Height';
+            document.getElementById('spec2val').value = '10.5 inches';
+            document.getElementById('spec3name').value = 'Material';
+            document.getElementById('spec3val').value = 'PVC/ABS';
+            document.getElementById('spec4name').value = 'Brand';
+            document.getElementById('spec4val').value = 'MegaHouse';
+            document.getElementById('spec5name').value = 'Release Date';
+            document.getElementById('spec5val').value = 'December 2023';
+            document.getElementById('spec6name').value = 'SKU';
+            document.getElementById('spec6val').value = 'MH-GOJ-002';
+            
+            updatePreview();
+            showToast('Demo data filled! You can edit and generate.');
+        }
+    </script>
+</body>
+</html>

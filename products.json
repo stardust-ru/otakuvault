@@ -1,0 +1,110 @@
+{
+  "products": [
+    {
+      "id": "furina-action-figure",
+      "name": "Furina Action Figure",
+      "category": "Genshin Impact",
+      "price": 141.29,
+      "originalPrice": 226.25,
+      "rating": 4.7,
+      "reviews": 127,
+      "badge": "LIMITED",
+      "discount": "-37%",
+      "stock": "in",
+      "amazonUrl": "https://amzn.in/d/05Bi9BB8",
+      "shortDescription": "Premium 1/7 scale collectible figure featuring the beloved Hydro Archon from Genshin Impact. Meticulously crafted with attention to detail for serious collectors.",
+      "description": "This collectible figure represents a popular character from the adventure game Genshin Impact. Standing at approximately 28 centimeters tall, this piece is designed for display purposes and appeals to fans of the game and collectors of gaming memorabilia. The figure is constructed from PVC material and features detailed sculpting that captures the character's distinctive appearance and costume elements.\n\nCollectors appreciate this type of merchandise for its artistic value and as a way to celebrate their connection to the game's story and characters. The figure includes a display base for stable positioning on shelves or in display cases. Due to the detailed nature of the sculpting and paint application, this item is recommended for adult collectors rather than as a toy.\n\nThis collectible is part of a limited production run, which often makes such items sought after by enthusiasts who curate gaming-related collections. The craftsmanship reflects the attention to detail that serious collectors look for when selecting pieces for their displays. Whether you're building a collection focused on a specific game series or simply appreciate well-made figurines, this piece offers visual interest and commemorates a popular gaming character.\n\nPlease note that this is a collectible display piece and is not intended for children under 14 years of age due to small parts and delicate components.",
+      "images": [
+        "images/furina-action-figure-1.jpg",
+        "images/furina-action-figure-2.jpg",
+        "images/furina-action-figure-3.jpg",
+        "images/furina-action-figure-4.jpg"
+      ],
+      "features": [
+        "1/7 scale collectible figure (approximately 28cm height)",
+        "Constructed from durable PVC material",
+        "Detailed sculpting and professional paint application",
+        "Includes display base for stable positioning",
+        "Limited production run for collectors",
+        "Suitable for adult collectors and enthusiasts"
+      ],
+      "specs": {
+        "Scale": "1/7",
+        "Height": "Approximately 28cm (11 inches)",
+        "Material": "PVC",
+        "Series": "Genshin Impact",
+        "Type": "Display Figure",
+        "Recommended Age": "14 years and above"
+      }
+    },
+    {
+      "id": "anime-wall-scroll-set",
+      "name": "Premium Anime Wall Scroll Collection",
+      "category": "Home Decor",
+      "price": 49.99,
+      "originalPrice": 79.99,
+      "rating": 4.5,
+      "reviews": 234,
+      "badge": "POPULAR",
+      "discount": "-38%",
+      "stock": "in",
+      "amazonUrl": "https://amazon.com/dp/B08EXAMPLE1",
+      "shortDescription": "Set of three premium fabric wall scrolls featuring original anime-inspired artwork. Perfect for personalizing your space.",
+      "description": "These decorative wall scrolls offer an attractive way to personalize living spaces, bedrooms, or home offices with anime-inspired artwork. Each scroll in this three-piece set measures 16 by 24 inches and is printed on quality fabric material designed for durability and color retention.\n\nThe scrolls feature original artwork that draws inspiration from popular anime aesthetic styles, making them suitable for fans who want to create a themed environment. The fabric construction allows the scrolls to hang smoothly, and each piece includes a hanging rod with string for easy installation. No additional hardware is required beyond a simple wall hook or nail.\n\nMany people use these types of decorative pieces to express their interests and create personalized spaces. The scrolls work well in various settings, from college dorm rooms to dedicated entertainment areas. They can be grouped together for a gallery wall effect or displayed separately in different rooms.\n\nThe printing process uses fade-resistant inks to help maintain color vibrancy over time. Care instructions recommend gentle spot cleaning if needed. These scrolls make thoughtful gifts for anime enthusiasts or anyone who appreciates Japanese art styles.",
+      "images": [
+        "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&q=80",
+        "https://images.unsplash.com/photo-1607604276583-eef5a0adcc99?w=600&q=80"
+      ],
+      "features": [
+        "Set of three wall scrolls",
+        "16 x 24 inch dimensions per scroll",
+        "Printed on durable fabric material",
+        "Includes hanging hardware",
+        "Fade-resistant printing",
+        "Original anime-inspired artwork"
+      ],
+      "specs": {
+        "Dimensions": "16\" x 24\" per scroll",
+        "Material": "Fabric (polyester blend)",
+        "Set Includes": "3 wall scrolls",
+        "Hanging Method": "Rod with string",
+        "Care": "Spot clean only"
+      }
+    },
+    {
+      "id": "led-display-case",
+      "name": "LED Display Case for Collectibles",
+      "category": "Display & Storage",
+      "price": 89.99,
+      "originalPrice": 129.99,
+      "rating": 4.8,
+      "reviews": 456,
+      "badge": "BESTSELLER",
+      "discount": "-31%",
+      "stock": "in",
+      "amazonUrl": "https://amazon.com/dp/B08EXAMPLE2",
+      "shortDescription": "Illuminated acrylic display case perfect for showcasing action figures, collectibles, and memorabilia with built-in LED lighting.",
+      "description": "This display case provides an attractive solution for collectors who want to showcase their prized items while keeping them protected from dust and handling. The case measures 12 inches in height and features clear acrylic construction on all sides, offering 360-degree visibility of displayed items.\n\nThe integrated LED lighting system includes adjustable brightness settings, allowing you to highlight your collectibles effectively. The lighting runs on USB power (cable included), making it convenient to use on desks, shelves, or in display cabinets without requiring batteries. The LED system is energy-efficient and produces minimal heat, which is important for preserving collectibles.\n\nCollectors often use cases like this to protect valuable items from dust, accidental damage, and UV exposure while still being able to enjoy viewing their collection. The acrylic material is lighter than glass but provides similar clarity. The removable top makes it easy to rearrange or add items to your display.\n\nThis case is particularly well-suited for action figures, small statues, trading cards, medals, or other collectible items in the 6-10 inch height range. The neutral design complements various room styles and allows the focus to remain on the displayed items. Many collectors use multiple cases to create coordinated display arrangements.",
+      "images": [
+        "https://images.unsplash.com/photo-1595246140625-573b715d11dc?w=600&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+      ],
+      "features": [
+        "Clear acrylic construction for 360° viewing",
+        "Built-in LED lighting with brightness control",
+        "USB-powered (cable included)",
+        "Removable top for easy access",
+        "Protects from dust and UV exposure",
+        "Suitable for figures up to 10 inches tall"
+      ],
+      "specs": {
+        "External Dimensions": "12\" H x 8\" W x 8\" D",
+        "Internal Space": "11\" H x 7.5\" W x 7.5\" D",
+        "Material": "Acrylic",
+        "Lighting": "Adjustable LED",
+        "Power": "USB (cable included)",
+        "Weight": "1.8 lbs"
+      }
+    }
+  ]
+}

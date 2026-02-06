@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OtakuVault FAQ - Frequently asked questions about anime collectibles, shipping, returns, and more.">
+    <title>FAQ | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 0.75rem; border-radius: 12px; cursor: pointer; }
+        
+        .page-header { padding: 8rem 5% 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1)); border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .page-title { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+        
+        .content-container { max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+        
+        .faq-category { margin-bottom: 3rem; }
+        .faq-category h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.75rem; }
+        
+        .faq-item { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; margin-bottom: 1rem; overflow: hidden; transition: all 0.3s; }
+        .faq-item:hover { border-color: var(--glass-highlight); }
+        .faq-item.active { border-color: var(--accent-cyan); }
+        
+        .faq-question { padding: 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--text-primary); }
+        .faq-question:hover { background: rgba(255,255,255,0.02); }
+        .faq-icon { transition: transform 0.3s; color: var(--accent-cyan); }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-answer-content { padding: 0 1.25rem 1.25rem; color: var(--text-secondary); line-height: 1.8; }
+        .faq-answer-content p { margin-bottom: 0.75rem; }
+        .faq-answer-content ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        .faq-answer-content li { margin-bottom: 0.25rem; }
+        
+        .search-box { margin-bottom: 3rem; }
+        .search-input { width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 50px; padding: 1rem 1.5rem; color: var(--text-primary); font-size: 1rem; outline: none; transition: all 0.3s; }
+        .search-input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1); }
+        .search-input::placeholder { color: var(--text-muted); }
+        
+        .contact-cta { background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .contact-cta h3 { margin-bottom: 0.5rem; }
+        .contact-cta p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .contact-btn { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); color: white; padding: 0.875rem 2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: transform 0.3s; }
+        .contact-btn:hover { transform: translateY(-2px); }
+        
+        footer { padding: 3rem 5%; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-copyright { color: var(--text-muted); font-size: 0.875rem; }
+        
+        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 1rem 2rem; border-radius: 50px; font-weight: 500; z-index: 10001; opacity: 0; transition: all 0.4s; display: flex; align-items: center; gap: 0.75rem; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-title { font-size: 2rem; }
+            .content-container { padding: 2rem 5%; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="box" style="width: 24px; height: 24px; color: white;"></i>
+                </div>
+                OtakuVault
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+                <i data-lucide="home" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">Frequently Asked Questions</h1>
+        <p class="page-subtitle">Find answers to common questions about our anime collectibles, ordering process, and policies.</p>
+    </header>
+
+    <main class="content-container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search for answers..." id="faqSearch">
+        </div>
+
+        <div class="faq-category">
+            <h2><i data-lucide="help-circle" style="width: 24px; height: 24px;"></i> General Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What is OtakuVault?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>OtakuVault is a curated marketplace for premium anime collectibles, action figures, and accessories. We partner with Amazon and other retailers to bring you authentic merchandise from popular series like Demon Slayer, Jujutsu Kaisen, Attack on Titan, and more.</p>
+                        <p>As an Amazon Associate, we earn from qualifying purchases, allowing us to offer competitive prices and exclusive deals to fellow anime enthusiasts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Are your products authentic?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Absolutely! We only source products from authorized distributors and retailers. Every item we feature is:</p>
+                        <ul>
+                            <li>Officially licensed by the original creators</li>
+                            <li>Sourced from authorized Japanese distributors</li>
+                            <li>Backed by manufacturer warranties</li>
+                            <li>Shipped in original packaging with holographic seals</li>
+                        </ul>
+                        <p>We never sell counterfeit or bootleg merchandise. Your collection deserves only the best.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do you ship internationally?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes! We ship to over 100 countries worldwide through our Amazon partnership. International shipping options include:</p>
+                        <ul>
+                            <li>Standard International (7-21 business days)</li>
+                            <li>Expedited International (5-10 business days)</li>
+                            <li>Priority Courier (3-7 business days)</li>
+                        </ul>
+                        <p>Please note that international customers are responsible for all import duties, taxes, and customs fees. These charges vary by country and are not included in the product price.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <h2><i data-lucide="shopping-cart" style="width: 24px; height: 24px;"></i> Orders & Payment</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How do I place an order?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Ordering is simple:</p>
+                        <ol style="margin-left: 1.5rem;">
+                            <li>Browse our collection and click on any product</li>
+                            <li>Click "Buy Now on Amazon" button</li>
+                            <li>You'll be redirected to Amazon to complete your purchase</li>
+                            <li>Use your Amazon account or checkout as guest</li>
+                            <li>Receive confirmation email with order details</li>
+                        </ol>
+                        <p>All payments are processed securely through Amazon's trusted payment system. We never see or store your credit card information.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What payment methods do you accept?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Since purchases are completed through Amazon, you can use any payment method accepted by Amazon:</p>
+                        <ul>
+                            <li>All major credit cards (Visa, MasterCard, American Express, Discover)</li>
+                            <li>Debit cards</li>
+                            <li>Amazon Gift Cards</li>
+                            <li>Amazon Store Card</li>
+                            <li>Amazon Pay</li>
+                            <li>PayPal (in select regions)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I cancel or modify my order?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Orders can be cancelled or modified within a short window after placement:</p>
+                        <ul>
+                            <li><strong>Unshipped orders:</strong> Can usually be cancelled through Amazon Order History</li>
+                            <li><strong>Shipped orders:</strong> Cannot be cancelled, but you can refuse delivery or return after receipt</li>
+                            <li><strong>Address changes:</strong> Not possible after ordering - contact Amazon immediately if you made an error</li>
+                        </ul>
+                        <p>Act quickly! Amazon processes orders fast, often within hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do you offer student discounts?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes! We offer a 10% student discount on most items. To verify your student status:</p>
+                        <ol style="margin-left: 1.5rem;">
+                            <li>Visit our <a href="student-discount.html" style="color: var(--accent-cyan);">Student Discount</a> page</li>
+                            <li>Verify through Student Beans or UNiDAYS</li>
+                            <li>Receive your unique discount code</li>
+                            <li>Apply at checkout on Amazon (where applicable)</li>
+                        </ol>
+                        <p>Student discounts cannot be combined with other promotional offers but can be used on sale items.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <h2><i data-lucide="package" style="width: 24px; height: 24px;"></i> Shipping & Delivery</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How long will my order take to arrive?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Delivery times depend on your location and shipping method:</p>
+                        <ul>
+                            <li><strong>Amazon Prime (US):</strong> 1-2 business days</li>
+                            <li><strong>Standard Shipping (US):</strong> 5-8 business days</li>
+                            <li><strong>Expedited (US):</strong> 2-3 business days</li>
+                            <li><strong>International:</strong> 7-21 business days depending on destination</li>
+                        </ul>
+                        <p>You'll receive a tracking number once your order ships. Pre-ordered items ship on or after the release date.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How much is shipping?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Shipping costs vary by method and destination:</p>
+                        <ul>
+                            <li><strong>FREE Standard Shipping:</strong> On orders $25+ (US, non-Prime)</li>
+                            <li><strong>FREE Prime Shipping:</strong> 1-2 day delivery for Amazon Prime members</li>
+                            <li><strong>Expedited:</strong> Calculated at checkout based on weight/destination</li>
+                            <li><strong>International:</strong> Varies by country, shown at checkout</li>
+                        </ul>
+                        <p>Exact shipping costs are displayed before you complete your purchase.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How do I track my order?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Track your package easily:</p>
+                        <ol style="margin-left: 1.5rem;">
+                            <li>Check your email for shipping confirmation with tracking number</li>
+                            <li>Visit <a href="https://www.amazon.com/gp/css/order-history" target="_blank" style="color: var(--accent-cyan);">Amazon Order History</a></li>
+                            <li>Click "Track Package" next to your order</li>
+                            <li>View real-time updates from carrier</li>
+                        </ol>
+                        <p>You can also sign up for text or email alerts for delivery updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <h2><i data-lucide="refresh-cw" style="width: 24px; height: 24px;"></i> Returns & Refunds</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What is your return policy?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We offer a <strong>30-day return policy</strong> for most items:</p>
+                        <ul>
+                            <li>Items must be in original, unopened condition</li>
+                            <li>All packaging, accessories, and inserts must be included</li>
+                            <li>Free return shipping for defective or incorrect items</li>
+                            <li>Refunds processed within 5-7 business days of receipt</li>
+                        </ul>
+                        <p>See our full <a href="returns.html" style="color: var(--accent-cyan);">Returns Policy</a> for complete details.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>My figure arrived damaged. What should I do?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We're sorry to hear that! Here's what to do:</p>
+                        <ol style="margin-left: 1.5rem;">
+                            <li><strong>Take photos:</strong> Document the damage from multiple angles</li>
+                            <li><strong>Keep packaging:</strong> Don't discard the box - it's needed for the claim</li>
+                            <li><strong>Contact Amazon:</strong> Report within 48 hours for fastest resolution</li>
+                            <li><strong>Choose resolution:</strong> Request replacement, refund, or partial credit</li>
+                        </ol>
+                        <p>For collector's editions, we prioritize replacements when available. If sold out, you'll receive a full refund.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I return a figure if I opened it?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Opened figures may be returned but are subject to conditions:</p>
+                        <ul>
+                            <li>Must be returned within 30 days</li>
+                            <li>15-30% restocking fee applies depending on condition</li>
+                            <li>All original packaging and accessories required</li>
+                            <li>Figure must not show signs of display or damage</li>
+                        </ul>
+                        <p>For the best return experience, we recommend inspecting figures carefully before opening if box condition is important to you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <h2><i data-lucide="box" style="width: 24px; height: 24px;"></i> Product Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What does "1/8 scale" mean?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Scale figures are sized relative to the character's "actual" height:</p>
+                        <ul>
+                            <li><strong>1/8 scale:</strong> Figure is 1/8th the size of the character (typically 8-9 inches tall)</li>
+                            <li><strong>1/7 scale:</strong> Slightly larger, about 9-10 inches</li>
+                            <li><strong>1/6 scale:</strong> Larger format, 10-12 inches</li>
+                            <li><strong>1/4 scale:</strong> Premium large format, 16-18 inches</li>
+                            <li><strong>Nendoroid/Chibi:</strong> Stylized cute versions, usually 4 inches</li>
+                        </ul>
+                        <p>Scale is important for collectors who want consistent sizing across their display.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What's the difference between PVC and ABS figures?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Most figures use a combination of materials:</p>
+                        <ul>
+                            <li><strong>PVC (Polyvinyl Chloride):</strong> Soft, flexible plastic used for main body parts. Allows for detailed sculpting and painting.</li>
+                            <li><strong>ABS (Acrylonitrile Butadiene Styrene):</strong> Hard, rigid plastic used for bases, weapons, and structural parts. More durable.</li>
+                        </ul>
+                        <p>High-end figures may also include die-cast metal parts for weight and premium feel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How should I care for my figures?</span>
+                    <i data-lucide="chevron-down" class="faq-icon" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Protect your investment with proper care:</p>
+                        <ul>
+                            <li><strong>Display:</strong> Keep away from direct sunlight to prevent fading</li>
+                            <li><strong>Dusting:</strong> Use soft microfiber cloth or air duster weekly</li>
+                            <li><strong>Cleaning:</strong> Damp cloth with mild soap for stubborn dirt</li>
+                            <li><strong>Temperature:</strong> Avoid extreme heat (above 85°F/30°C) and humidity</li>
+                            <li><strong>Handling:</strong> Wash hands before touching; avoid touching painted surfaces</li>
+                            <li><strong>Storage:</strong> Keep original boxes for potential future moves or sales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <h3>Still have questions?</h3>
+            <p>Our team is here to help! Reach out and we'll get back to you within 24 hours.</p>
+            <a href="contact.html" class="contact-btn">
+                Contact Support
+                <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="returns.html">Returns</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OtakuVault. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i data-lucide="info" style="width: 20px; height: 20px;"></i>
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const answer = element.nextElementSibling;
+            const isActive = item.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.faq-item.active').forEach(el => {
+                if (el !== item) {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+            
+            // Toggle current
+            if (isActive) {
+                item.classList.remove('active');
+                answer.style.maxHeight = null;
+            } else {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('faqSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+            
+            items.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>

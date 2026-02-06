@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about OtakuVault's mission to help anime fans discover quality collectibles and connect with the community.">
+    <title>About Us | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-cyan: #00d4ff;
+            --border-color: #2a2a2a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 5%;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        .content-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 1.0625rem;
+            margin-bottom: 1.5rem;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            color: var(--accent-cyan);
+        }
+        .value-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+        .value-card p {
+            font-size: 0.9375rem;
+            margin: 0;
+        }
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 5%;
+            margin-top: 5rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .values-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">OtakuVault</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>About OtakuVault</h1>
+        </div>
+
+        <div class="content-section">
+            <p>
+                OtakuVault was created by anime fans, for anime fans. We understand the excitement of discovering a perfectly crafted figure of your favorite character, the satisfaction of adding a meaningful piece to your collection, and the joy of connecting with others who share your passion for anime culture.
+            </p>
+            <p>
+                Our platform serves as a curated resource where collectors and enthusiasts can explore quality anime merchandise, learn about collecting best practices, and make informed decisions about their purchases. We recognize that building a collection is a personal journey, and our goal is to support you at every step with reliable information and thoughtful recommendations.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Mission</h2>
+            <p>
+                We aim to bridge the gap between anime fans and quality collectibles by providing a trustworthy platform that emphasizes authenticity, craftsmanship, and value. In a market flooded with options ranging from exceptional to subpar, we help collectors navigate their choices through detailed product information, honest assessments, and educational content.
+            </p>
+            <p>
+                Beyond simply showcasing products, we're committed to fostering appreciation for the artistry and skill that goes into creating high-quality anime merchandise. Each figure, display piece, or collectible represents hours of design work, sculpting, and manufacturing expertise. We believe collectors deserve to understand what makes certain pieces special and how to identify quality in their purchases.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="shield-check" style="width: 100%; height: 100%;"></i>
+                    </div>
+                    <h3>Authenticity</h3>
+                    <p>We only feature officially licensed products from reputable manufacturers who respect intellectual property and deliver quality.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="users" style="width: 100%; height: 100%;"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We believe in the power of shared passion and work to connect collectors through information, resources, and mutual appreciation.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i data-lucide="book-open" style="width: 100%; height: 100%;"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Knowledge empowers better collecting decisions. We provide guides, insights, and detailed information to help you choose wisely.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What We Offer</h2>
+            <p>
+                OtakuVault functions as your trusted guide in the world of anime collectibles. We carefully curate product selections based on quality, authenticity, and value to our community. Each item we feature undergoes evaluation for craftsmanship, licensing legitimacy, and overall appeal to collectors.
+            </p>
+            <p>
+                Our content library includes collecting guides, character background information, industry insights, and practical advice for both new and experienced collectors. We cover topics like identifying quality figures, understanding different scales and materials, displaying collections effectively, and navigating the secondary market safely.
+            </p>
+            <p>
+                We partner with established retailers and marketplaces to provide purchasing options, ensuring you can acquire items through legitimate channels that offer buyer protection and customer support. When you purchase through our affiliate links, you're accessing the same prices you'd find elsewhere while helping us maintain and improve this resource for the community.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Looking Forward</h2>
+            <p>
+                The world of anime continues to grow and evolve, and so does the collectibles market. We're excited to expand our content offerings, feature new and innovative products, and continue supporting the passionate community of collectors who make this hobby so vibrant.
+            </p>
+            <p>
+                Thank you for being part of the OtakuVault community. Whether you're just starting your first collection or you're a seasoned collector with years of experience, we're honored to be part of your journey celebrating the characters and stories you love.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 OtakuVault. All rights reserved.</p>
+        <p><a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

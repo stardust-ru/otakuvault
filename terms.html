@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OtakuVault Terms of Service - Read our terms and conditions for using our website and services.">
+    <title>Terms of Service | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 0.75rem; border-radius: 12px; cursor: pointer; }
+        
+        .page-header { padding: 8rem 5% 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1)); border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .page-title { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+        
+        .content-container { max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem; }
+        .content-section h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; color: var(--accent-cyan); }
+        .content-section p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8; }
+        .content-section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .content-section li { color: var(--text-secondary); margin-bottom: 0.5rem; line-height: 1.8; }
+        .content-section strong { color: var(--text-primary); }
+        
+        .highlight-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+        .highlight-box h3 { margin-top: 0; color: var(--accent-cyan); }
+        
+        footer { padding: 3rem 5%; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-copyright { color: var(--text-muted); font-size: 0.875rem; }
+        
+        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 1rem 2rem; border-radius: 50px; font-weight: 500; z-index: 10001; opacity: 0; transition: all 0.4s; display: flex; align-items: center; gap: 0.75rem; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-title { font-size: 2rem; }
+            .content-container { padding: 2rem 5%; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="box" style="width: 24px; height: 24px; color: white;"></i>
+                </div>
+                OtakuVault
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+                <i data-lucide="home" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">Terms of Service</h1>
+        <p class="page-subtitle">Please read these terms carefully before using our website and services.</p>
+    </header>
+
+    <main class="content-container">
+        <div class="highlight-box">
+            <h3>Agreement to Terms</h3>
+            <p>By accessing or using OtakuVault's website and services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our website or use our services.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="file-text" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Overview</h2>
+            <p>OtakuVault operates as an affiliate marketing website, connecting anime enthusiasts with quality collectibles available on Amazon and other partner retailers. We do not directly sell products; all purchases are completed through our partner sites.</p>
+            <p>These Terms of Service govern your use of our website located at www.otakuvault.com and all related services, features, content, and applications.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="user" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> User Accounts</h2>
+            <p>When you create an account with us, you must provide accurate, complete, and current information. Failure to do so constitutes a breach of these terms, which may result in immediate termination of your account.</p>
+            <p>You are responsible for:</p>
+            <ul>
+                <li>Maintaining the confidentiality of your account password</li>
+                <li>Restricting access to your computer and account</li>
+                <li>Accepting responsibility for all activities that occur under your account</li>
+                <li>Notifying us immediately of any unauthorized use or security breaches</li>
+            </ul>
+            <p>We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders at our sole discretion.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="shopping-cart" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Purchases and Payments</h2>
+            <h3>Affiliate Disclosure</h3>
+            <p>OtakuVault participates in the Amazon Services LLC Associates Program and other affiliate marketing programs. This means we earn commissions on qualifying purchases made through links on our website.</p>
+            
+            <h3>Pricing and Availability</h3>
+            <p>All product prices are displayed in USD unless otherwise noted. We strive to ensure all pricing information is accurate, but errors may occur. In the event of a pricing error, we reserve the right to cancel any orders placed at the incorrect price.</p>
+            <p>Product availability is subject to change without notice. We rely on our partners' inventory data, which may not always reflect real-time availability.</p>
+            
+            <h3>Payment Processing</h3>
+            <p>All payments are processed directly by our partner retailers (Amazon, etc.). We do not collect, store, or process your payment information. Please refer to the payment terms of the respective retailer when making a purchase.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="truck" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Shipping and Delivery</h2>
+            <p>Shipping terms, costs, and delivery times are determined by our partner retailers and shipping carriers. OtakuVault is not responsible for:</p>
+            <ul>
+                <li>Shipping delays caused by carriers or unforeseen circumstances</li>
+                <li>Lost or damaged packages (claims must be filed with the carrier)</li>
+                <li>Customs duties, taxes, or import fees for international orders</li>
+                <li>Address errors provided by the customer</li>
+            </ul>
+            <p>For specific shipping information, please refer to the retailer's shipping policy before completing your purchase.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="refresh-cw" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Returns and Refunds</h2>
+            <p>Return and refund policies are governed by the specific retailer from whom you made your purchase (typically Amazon's return policy). OtakuVault does not process returns or issue refunds directly.</p>
+            <p>For products purchased through Amazon:</p>
+            <ul>
+                <li>Most items can be returned within 30 days of receipt</li>
+                <li>Items must be in original condition and packaging</li>
+                <li>Return shipping may be free or paid depending on the reason</li>
+                <li>Refunds are processed to the original payment method</li>
+            </ul>
+            <p>Please contact the retailer directly for all return and refund inquiries.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="shield" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Intellectual Property</h2>
+            <p>All content on OtakuVault, including but not limited to text, graphics, logos, images, audio clips, digital downloads, and software, is the property of OtakuVault or its content suppliers and is protected by international copyright laws.</p>
+            <p>You may not:</p>
+            <ul>
+                <li>Reproduce, duplicate, copy, sell, resell, or exploit any portion of the service without express written permission</li>
+                <li>Use our trademarks, logos, or branding without authorization</li>
+                <li>Scrape, data-mine, or use automated means to access our website</li>
+                <li>Create derivative works based on our content</li>
+            </ul>
+            <p>Anime characters, logos, and related intellectual property featured in products are trademarks of their respective owners. OtakuVault claims no ownership over third-party intellectual property.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="message-square" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> User Content</h2>
+            <p>By posting reviews, comments, or other content on our website, you grant OtakuVault a non-exclusive, royalty-free, perpetual, irrevocable, and fully sublicensable right to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display such content.</p>
+            <p>You represent and warrant that:</p>
+            <ul>
+                <li>You own or control all rights to the content you post</li>
+                <li>The content is accurate and not misleading</li>
+                <li>The content does not violate any third-party rights</li>
+                <li>The content complies with all applicable laws</li>
+            </ul>
+            <p>We reserve the right to remove any user content that violates these terms or that we find objectionable for any reason.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="ban" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Prohibited Activities</h2>
+            <p>You agree not to use our website for any unlawful purpose or to engage in any activity that:</p>
+            <ul>
+                <li>Violates any international, federal, provincial, or state regulations</li>
+                <li>Infringes upon or violates our intellectual property rights or those of others</li>
+                <li>Harasses, abuses, insults, harms, defames, slanders, or discriminates</li>
+                <li>Transmits viruses, worms, or any code of a destructive nature</li>
+                <li>Interferes with or circumvents the security features of the service</li>
+                <li>Collects or tracks personal information of others</li>
+                <li>Spams, phishes, or scrapes our website</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="alert-triangle" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Disclaimer of Warranties</h2>
+            <p>OtakuVault provides this website and all content "as is" and "as available" without any warranties of any kind, either express or implied, including but not limited to:</p>
+            <ul>
+                <li>Merchantability warranties</li>
+                <li>Fitness for a particular purpose</li>
+                <li>Non-infringement</li>
+                <li>Accuracy or reliability of content</li>
+                <li>Uninterrupted or error-free service</li>
+            </ul>
+            <p>We do not guarantee that our website will be secure, free of viruses, or available at all times.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="dollar-sign" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Limitation of Liability</h2>
+            <p>In no event shall OtakuVault, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation:</p>
+            <ul>
+                <li>Loss of profits, data, use, goodwill, or other intangible losses</li>
+                <li>Personal injury or property damage</li>
+                <li>Unauthorized access to or use of our servers</li>
+                <li>Any bugs, viruses, or similar issues transmitted to or through our site</li>
+                <li>Errors, mistakes, or inaccuracies in content</li>
+            </ul>
+            <p>Our total liability shall not exceed the amount you paid to us in the past six months, or $100, whichever is greater.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="scale" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Governing Law</h2>
+            <p>These Terms shall be governed and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law provisions.</p>
+            <p>Any dispute arising from these terms shall be resolved through binding arbitration in Los Angeles County, California, except that either party may seek injunctive relief in a court of competent jurisdiction.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="edit-3" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Changes to Terms</h2>
+            <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect.</p>
+            <p>Your continued use of our website after any changes constitutes acceptance of the new Terms.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="mail" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Contact Us</h2>
+            <p>If you have any questions about these Terms, please contact us:</p>
+            <ul>
+                <li><strong>Email:</strong> legal@otakuvault.com</li>
+                <li><strong>Address:</strong> OtakuVault Legal Department, 123 Anime Street, Tokyo District, CA 90210</li>
+            </ul>
+        </div>
+    </main>
+
+    <div class="toast" id="toast">
+        <i data-lucide="info" style="width: 20px; height: 20px;"></i>
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="returns.html">Returns</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OtakuVault. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>

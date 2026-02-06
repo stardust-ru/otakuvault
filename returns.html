@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OtakuVault Returns Policy - Learn about our return process and refunds for anime collectibles.">
+    <title>Returns Policy | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 0.75rem; border-radius: 12px; cursor: pointer; }
+
+        .page-header { padding: 8rem 5% 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1)); border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .page-title { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+
+        .content-container { max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem; }
+        .content-section h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; color: var(--accent-cyan); }
+        .content-section p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8; }
+        .content-section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .content-section li { color: var(--text-secondary); margin-bottom: 0.5rem; line-height: 1.8; }
+        .content-section strong { color: var(--text-primary); }
+
+        .highlight-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+        .highlight-box h3 { margin-top: 0; color: var(--accent-cyan); }
+
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple)); }
+        .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 1.5rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -2rem; top: 0.5rem; width: 12px; height: 12px; background: var(--accent-cyan); border-radius: 50%; border: 3px solid var(--primary-black); }
+        .timeline-item h4 { color: var(--accent-cyan); margin-bottom: 0.5rem; }
+
+        footer { padding: 3rem 5%; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-copyright { color: var(--text-muted); font-size: 0.875rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-title { font-size: 2rem; }
+            .content-container { padding: 2rem 5%; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px; color: white;">📦</span>
+                </div>
+                OtakuVault
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+                <span style="font-size: 24px;">🏠</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">Returns & Refunds</h1>
+        <p class="page-subtitle">Our hassle-free return policy ensures your complete satisfaction with every purchase.</p>
+    </header>
+
+    <main class="content-container">
+        <div class="highlight-box">
+            <h3>30-Day Return Policy</h3>
+            <p>We offer a 30-day return policy for most items. If you're not completely satisfied with your purchase, you can return it for a full refund or exchange.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Return Process</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>1. Request a Return</h4>
+                    <p>Contact us within 30 days of receiving your order. Provide your order number and reason for return.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2. Get Return Authorization</h4>
+                    <p>We'll review your request and provide a Return Merchandise Authorization (RMA) number within 24-48 hours.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>3. Package Your Return</h4>
+                    <p>Pack the item securely in its original packaging with all accessories and documentation included.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>4. Ship It Back</h4>
+                    <p>Use a trackable shipping method and include the RMA number on the package. We'll provide the return address.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>5. Receive Your Refund</h4>
+                    <p>Once we receive and inspect your return, we'll process your refund within 5-7 business days.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Return Conditions</h2>
+            <p>To be eligible for a return, your item must meet the following conditions:</p>
+            <ul>
+                <li><strong>Time Limit:</strong> Returned within 30 days of delivery</li>
+                <li><strong>Condition:</strong> Unopened and in original packaging (for full refund)</li>
+                <li><strong>Opened Items:</strong> May be subject to a 15-30% restocking fee</li>
+                <li><strong>Documentation:</strong> Include all original accessories, manuals, and inserts</li>
+                <li><strong>Damage:</strong> Items damaged due to mishandling are not eligible</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Refund Information</h2>
+            <h3>Refund Methods</h3>
+            <ul>
+                <li><strong>Original Payment:</strong> Refunds are issued to the original payment method</li>
+                <li><strong>Store Credit:</strong> Available immediately for exchanges or future purchases</li>
+                <li><strong>Processing Time:</strong> 5-7 business days after we receive your return</li>
+                <li><strong>Bank Processing:</strong> Additional 3-5 business days for credit cards</li>
+            </ul>
+
+            <h3>Non-Refundable Items</h3>
+            <ul>
+                <li>Downloadable digital products</li>
+                <li>Gift cards</li>
+                <li>Items marked as "Final Sale"</li>
+                <li>Personalized or custom-made items</li>
+                <li>Items damaged due to customer mishandling</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Damaged or Defective Items</h2>
+            <p>If your item arrives damaged or defective:</p>
+            <ul>
+                <li>Contact us within 48 hours of delivery</li>
+                <li>Take photos of the damaged item and packaging</li>
+                <li>We will provide a prepaid return label</li>
+                <li>Choose between a replacement or full refund</li>
+                <li>No restocking fees for damaged/defective items</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Exchanges</h2>
+            <p>Want to exchange for a different item?</p>
+            <ul>
+                <li>Follow the same return process</li>
+                <li>Note your preferred exchange item in the return request</li>
+                <li>We'll process the exchange once we receive your return</li>
+                <li>Price differences will be charged or refunded accordingly</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Contact Us</h2>
+            <p>Have questions about your return?</p>
+            <ul>
+                <li><strong>Email:</strong> returns@otakuvault.com</li>
+                <li><strong>Response Time:</strong> Within 24 hours</li>
+                <li><strong>Include:</strong> Order number and reason for return</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="returns.html">Returns</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OtakuVault. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

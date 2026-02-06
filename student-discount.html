@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OtakuVault Student Discount - Get 10% off anime collectibles with valid student ID.">
+    <title>Student Discount | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --success: #10b981;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 0.75rem; border-radius: 12px; cursor: pointer; }
+        
+        .hero-section { padding: 10rem 5% 4rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(139, 92, 246, 0.15)); text-align: center; border-bottom: 1px solid var(--glass-border); }
+        .discount-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 700; margin-bottom: 1.5rem; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .hero-title { font-size: 3.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { color: var(--text-secondary); font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem; }
+        
+        .content-container { max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem; }
+        .content-section p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8; }
+        
+        .verify-box { background: var(--glass-bg); border: 2px solid var(--glass-border); border-radius: 24px; padding: 3rem; text-align: center; margin: 2rem 0; }
+        .verify-box h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .verify-box p { margin-bottom: 2rem; }
+        
+        .verify-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .verify-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s; color: var(--text-primary); }
+        .verify-btn:hover { background: var(--glass-highlight); transform: translateY(-3px); border-color: var(--accent-cyan); }
+        .verify-btn img { height: 40px; margin-bottom: 0.75rem; }
+        .verify-btn span { display: block; font-weight: 600; }
+        
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .benefit-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
+        .benefit-card:hover { border-color: var(--accent-cyan); transform: translateY(-5px); }
+        .benefit-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .benefit-card h3 { margin-bottom: 0.5rem; }
+        .benefit-card p { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
+        
+        .terms-box { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; padding: 1.5rem; margin-top: 2rem; }
+        .terms-box h3 { color: #f59e0b; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .terms-box ul { margin-left: 1.5rem; color: var(--text-secondary); }
+        .terms-box li { margin-bottom: 0.5rem; }
+        
+        footer { padding: 3rem 5%; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-copyright { color: var(--text-muted); font-size: 0.875rem; }
+        
+        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 1rem 2rem; border-radius: 50px; font-weight: 500; z-index: 10001; opacity: 0; transition: all 0.4s; display: flex; align-items: center; gap: 0.75rem; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-title { font-size: 2rem; }
+            .verify-box { padding: 1.5rem; }
+            .content-container { padding: 2rem 5%; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="box" style="width: 24px; height: 24px; color: white;"></i>
+                </div>
+                OtakuVault
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+                <i data-lucide="home" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="discount-badge">
+            <i data-lucide="graduation-cap" style="width: 20px; height: 20px;"></i>
+            Student Exclusive
+        </div>
+        <h1 class="hero-title">10% Off for Students</h1>
+        <p class="hero-subtitle">Verified students save on every order. Stack with sale prices for maximum savings on your anime collectibles.</p>
+    </section>
+
+    <main class="content-container">
+        <div class="verify-box">
+            <h3>Verify Your Student Status</h3>
+            <p>Choose your verification platform below. You'll be redirected to complete verification securely.</p>
+            
+            <div class="verify-options">
+                <button class="verify-btn" onclick="verifyStudent('studentbeans')">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎓</div>
+                    <span>Student Beans</span>
+                </button>
+                <button class="verify-btn" onclick="verifyStudent('unidays')">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✓</div>
+                    <span>UNiDAYS</span>
+                </button>
+                <button class="verify-btn" onclick="verifyStudent('sheerid')">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🆔</div>
+                    <span>SheerID</span>
+                </button>
+            </div>
+            
+            <p style="font-size: 0.875rem; color: var(--text-muted);">
+                Verification is free and takes less than 2 minutes. Your student status will be valid for 12 months.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="gift" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Student Benefits</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="percent" style="width: 28px; height: 28px; color: white;"></i>
+                    </div>
+                    <h3>10% Off Everything</h3>
+                    <p>Valid on all products, including sale items and pre-orders</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="truck" style="width: 28px; height: 28px; color: white;"></i>
+                    </div>
+                    <h3>Free Shipping</h3>
+                    <p>Free standard shipping on orders over $25 with Prime Student</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="clock" style="width: 28px; height: 28px; color: white;"></i>
+                    </div>
+                    <h3>Early Access</h3>
+                    <p>Get 24-hour early access to limited edition drops</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="mail" style="width: 28px; height: 28px; color: white;"></i>
+                    </div>
+                    <h3>Exclusive News</h3>
+                    <p>Student-only newsletter with extra deals and tips</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="help-circle" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> How It Works</h2>
+            <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                <li style="margin-bottom: 1rem;"><strong>Verify:</strong> Click one of the verification options above and complete the process with your .edu email or student ID</li>
+                <li style="margin-bottom: 1rem;"><strong>Receive Code:</strong> Get your unique 10% discount code via email within minutes</li>
+                <li style="margin-bottom: 1rem;"><strong>Shop:</strong> Browse our collection and add items to your cart on Amazon</li>
+                <li style="margin-bottom: 1rem;"><strong>Save:</strong> Apply your discount code at checkout for instant savings</li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="users" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Who Qualifies?</h2>
+            <p>You qualify for the student discount if you are:</p>
+            <ul style="margin-left: 1.5rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                <li>Currently enrolled at a college or university</li>
+                <li>Enrolled in a further education course</li>
+                <li>Studying for A-levels or equivalent</li>
+                <li>Enrolled in an apprenticeship program</li>
+                <li>International students with valid enrollment</li>
+            </ul>
+            <p style="color: var(--text-secondary);">Recent graduates within 6 months of graduation may also qualify. Contact us for details.</p>
+        </div>
+
+        <div class="terms-box">
+            <h3><i data-lucide="alert-circle" style="width: 20px; height: 20px;"></i> Terms & Conditions</h3>
+            <ul>
+                <li>Discount valid for 12 months from verification date</li>
+                <li>Must re-verify annually to maintain discount</li>
+                <li>Cannot be combined with other promotional codes</li>
+                <li>Valid on in-stock items and pre-orders only</li>
+                <li>OtakuVault reserves the right to modify or end this program at any time</li>
+                <li>Fraudulent use will result in immediate disqualification</li>
+            </ul>
+        </div>
+
+        <div class="content-section" style="margin-top: 3rem;">
+            <h2><i data-lucide="message-circle" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Questions?</h2>
+            <p style="color: var(--text-secondary);">Having trouble with verification? Contact us at <strong>students@otakuvault.com</strong> and we'll help you get set up.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="returns.html">Returns</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OtakuVault. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i data-lucide="info" style="width: 20px; height: 20px;"></i>
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        function verifyStudent(platform) {
+            // In a real implementation, these would redirect to actual verification URLs
+            const urls = {
+                studentbeans: 'https://www.studentbeans.com/verify',
+                unidays: 'https://www.myunidays.com',
+                sheerid: 'https://www.sheerid.com/verify'
+            };
+            
+            showToast(`Redirecting to ${platform}...`);
+            
+            // Simulate redirect
+            setTimeout(() => {
+                // window.open(urls[platform], '_blank');
+                showToast('Verification portal would open here');
+            }, 1500);
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>

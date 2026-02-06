@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert guides and insights on anime collectibles, figure collecting, and fan culture from OtakuVault.">
+    <title>Blog - Guides & Insights | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-cyan: #00d4ff;
+            --border-color: #2a2a2a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 5%;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .page-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+        }
+        .blog-card-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .blog-card h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .read-more {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 5%;
+            margin-top: 5rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">OtakuVault</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Collector's Guide & Insights</h1>
+            <p>Expert tips, guides, and perspectives on anime collecting</p>
+        </div>
+
+        <div class="blog-grid">
+            <a href="blog-choosing-figures.html" class="blog-card">
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span>February 6, 2026</span>
+                        <span>•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <h2>How to Choose Quality Anime Figures for Your Collection</h2>
+                    <p class="blog-excerpt">
+                        Building a collection of anime figures can be incredibly rewarding. Learn how to identify quality pieces by understanding materials, paint application, authenticity, and value. This comprehensive guide covers everything from scale and sizing to assessing craftsmanship and avoiding common pitfalls.
+                    </p>
+                    <span class="read-more">
+                        Read Article
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </span>
+                </div>
+            </a>
+
+            <a href="blog-why-popular.html" class="blog-card">
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span>February 6, 2026</span>
+                        <span>•</span>
+                        <span>9 min read</span>
+                    </div>
+                    <h2>Why Anime Collectibles Are Popular Among Fans</h2>
+                    <p class="blog-excerpt">
+                        Discover the fascinating reasons behind the surge in anime collectible popularity. From emotional connections and artistic appreciation to community building and self-expression, explore what makes collecting such a meaningful hobby for fans worldwide.
+                    </p>
+                    <span class="read-more">
+                        Read Article
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 OtakuVault. All rights reserved.</p>
+        <p><a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

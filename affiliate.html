@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OtakuVault Amazon Affiliate Disclosure - Learn about our affiliate partnerships.">
+    <title>Affiliate Disclosure | OtakuVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 0.75rem; border-radius: 12px; cursor: pointer; }
+        
+        .page-header { padding: 8rem 5% 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1)); border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .page-title { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+        
+        .content-container { max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem; }
+        .content-section h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; color: var(--accent-cyan); }
+        .content-section p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8; }
+        .content-section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .content-section li { color: var(--text-secondary); margin-bottom: 0.5rem; line-height: 1.8; }
+        .content-section strong { color: var(--text-primary); }
+        
+        .highlight-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+        .highlight-box h3 { margin-top: 0; color: var(--accent-cyan); }
+        
+        footer { padding: 3rem 5%; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-copyright { color: var(--text-muted); font-size: 0.875rem; }
+        
+        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 1rem 2rem; border-radius: 50px; font-weight: 500; z-index: 10001; opacity: 0; transition: all 0.4s; display: flex; align-items: center; gap: 0.75rem; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-title { font-size: 2rem; }
+            .content-container { padding: 2rem 5%; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="box" style="width: 24px; height: 24px; color: white;"></i>
+                </div>
+                OtakuVault
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+                <i data-lucide="home" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">Amazon Affiliate Disclosure</h1>
+        <p class="page-subtitle">Transparency about our partnerships and how we earn revenue.</p>
+    </header>
+
+    <main class="content-container">
+        <div class="highlight-box">
+            <h3>Federal Trade Commission (FTC) Disclosure</h3>
+            <p>OtakuVault is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="handshake" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> What This Means</h2>
+            <p>When you click on product links on our website and make a purchase on Amazon, we may earn a small commission at no additional cost to you. This affiliate relationship helps us:</p>
+            <ul>
+                <li>Maintain and improve our website</li>
+                <li>Curate quality product selections</li>
+                <li>Provide detailed product information and reviews</li>
+                <li>Offer student discounts and special promotions</li>
+                <li>Create helpful content for the anime community</li>
+            </ul>
+            <p><strong>Important:</strong> You pay the same price whether you use our links or go directly to Amazon. Our commission comes from Amazon's side of the transaction, not from you.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="dollar-sign" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> How It Works</h2>
+            <h3>1. Product Links</h3>
+            <p>Most product links on our website are affiliate links. When you click these links, a small tracking cookie is placed on your browser. This cookie tells Amazon that you came from OtakuVault.</p>
+            
+            <h3>2. Your Purchase</h3>
+            <p>If you make a purchase on Amazon within 24 hours of clicking our link (or add an item to your cart within 24 hours and complete the purchase within 89 days), we earn a commission.</p>
+            
+            <h3>3. Commission Rates</h3>
+            <p>Commission rates vary by product category, typically ranging from 1% to 10% of the purchase price. These rates are set by Amazon and change periodically.</p>
+            
+            <h3>4. Full Cart Commission</h3>
+            <p>We earn commission on your entire cart, not just the specific product you clicked. If you click our link for a figure but also buy a book and headphones, we earn commission on all items.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="shield-check" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Our Commitment to You</h2>
+            <p>Our affiliate relationship with Amazon does not influence our product recommendations. We are committed to:</p>
+            <ul>
+                <li><strong>Honest Reviews:</strong> We only recommend products we genuinely believe in</li>
+                <li><strong>Fair Pricing:</strong> We highlight the best deals, regardless of commission rate</li>
+                <li><strong>Transparency:</strong> We clearly disclose our affiliate relationships</li>
+                <li><strong>Quality First:</strong> We prioritize product quality over commission potential</li>
+                <li><strong>User Experience:</strong> Your trust is more valuable than any commission</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="list" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Other Affiliate Programs</h2>
+            <p>In addition to Amazon, we may participate in other affiliate programs, including but not limited to:</p>
+            <ul>
+                <li>Crunchyroll Store</li>
+                <li>Right Stuf Anime</li>
+                <li>Tokyo Otaku Mode</li>
+                <li>Good Smile Company</li>
+                <li>Selected merchandise retailers</li>
+            </ul>
+            <p>All affiliate relationships will be clearly disclosed on relevant pages.</p>
+        </div>
+
+        <div class="content-section">
+            <h2><i data-lucide="message-circle" style="width: 28px; height: 28px; color: var(--accent-cyan);"></i> Questions?</h2>
+            <p>If you have any questions about our affiliate relationships or how we monetize our website, please contact us at <a href="mailto:transparency@otakuvault.com" style="color: var(--accent-cyan);">transparency@otakuvault.com</a>.</p>
+            <p>We believe in complete transparency with our community and are happy to answer any questions you may have.</p>
+        </div>
+
+        <div class="content-section">
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--glass-border);">Last Updated: January 1, 2026 | This disclosure complies with FTC guidelines for affiliate marketing.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="returns.html">Returns</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OtakuVault. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i data-lucide="info" style="width: 20px; height: 20px;"></i>
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>
